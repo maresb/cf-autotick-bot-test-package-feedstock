@@ -1,7 +1,4 @@
-on:
-  pull_request:
-    types:
-      - labeled
+on: repository_dispatch
 
 jobs:
   create_commit:
