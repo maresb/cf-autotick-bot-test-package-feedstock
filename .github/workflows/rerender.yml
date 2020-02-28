@@ -1,0 +1,15 @@
+on:
+  pull_request:
+    types:
+      - labeled
+
+jobs:
+  rerender-action:
+    runs-on: ubuntu-latest
+    name: rerender-action
+    steps:
+      - name: rerender-action
+        id: rerender-action
+        uses: conda-forge/rerender-action@dev
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
