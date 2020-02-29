@@ -1,7 +1,7 @@
 on: repository_dispatch
 
 jobs:
-  rerender-action:
+  webservices:
     runs-on: ubuntu-latest
     name: webservices
     steps:
