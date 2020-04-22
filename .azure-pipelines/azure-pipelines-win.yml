@@ -64,30 +64,34 @@ jobs:
 
     - task: CondaEnvironment@1
       inputs:
-        packageSpecs: 'python=3.6 conda-build conda conda-forge::conda-forge-ci-setup=2' # Optional
+        packageSpecs: 'python=3.6 conda-build conda conda-forge::conda-forge-ci-setup=3 pip' # Optional
         installOptions: "-c conda-forge"
         updateConda: true
       displayName: Install conda-build and activate environment
 
     - script: set PYTHONUNBUFFERED=1
+      displayName: Set PYTHONUNBUFFERED
 
     # Configure the VM
-    - script: setup_conda_rc .\ ".\recipe" .\.ci_support\%CONFIG%.yaml
+    - script: |
+        call activate base
+        conda.exe uninstall --quiet --yes --force conda-forge-ci-setup
+        pip install --no-deps ".\recipe\."
+        setup_conda_rc .\ ".\recipe" .\.ci_support\%CONFIG%.yaml
+      displayName: conda-forge CI setup
 
     # Configure the VM.
     - script: |
         set "CI=azure"
-        run_conda_forge_build_setup
+        call activate base
+        # Overriding global run_conda_forge_build_setup_win with local copy.
+        recipe\run_conda_forge_build_setup_win
       displayName: conda-forge build setup
     
 
-    - script: |
-        rmdir C:\strawberry /s /q
-      continueOnError: true
-      displayName: remove strawberryperl
-
     # Special cased version setting some more things!
     - script: |
+        call activate base
         conda.exe build "recipe" -m .ci_support\%CONFIG%.yaml
       displayName: Build recipe (vs2008)
       env:
@@ -96,16 +100,23 @@ jobs:
       condition: contains(variables['CONFIG'], 'vs2008')
 
     - script: |
+        call activate base
         conda.exe build "recipe" -m .ci_support\%CONFIG%.yaml
       displayName: Build recipe
       env:
         PYTHONUNBUFFERED: 1
       condition: not(contains(variables['CONFIG'], 'vs2008'))
+    - script: |
+        call activate base
+        validate_recipe_outputs "cf-autotick-bot-test-package-feedstock"
+      displayName: Validate Recipe Outputs
 
     - script: |
         set "GIT_BRANCH=%BUILD_SOURCEBRANCHNAME%"
-        upload_package .\ ".\recipe" .ci_support\%CONFIG%.yaml
+        call activate base
+        upload_package --validate "cf-autotick-bot-test-package-feedstock" .\ ".\recipe" .ci_support\%CONFIG%.yaml
       displayName: Upload package
       env:
         BINSTAR_TOKEN: $(BINSTAR_TOKEN)
+        FEEDSTOCK_TOKEN: $(FEEDSTOCK_TOKEN)
       condition: and(succeeded(), not(eq(variables['UPLOAD_PACKAGES'], 'False')))
