@@ -119,4 +119,5 @@ jobs:
       env:
         BINSTAR_TOKEN: $(BINSTAR_TOKEN)
         FEEDSTOCK_TOKEN: $(FEEDSTOCK_TOKEN)
+        STAGING_BINSTAR_TOKEN: $(STAGING_BINSTAR_TOKEN)
       condition: and(succeeded(), not(eq(variables['UPLOAD_PACKAGES'], 'False')))
