@@ -25,6 +25,7 @@ steps:
     - export CI=drone
     - export GIT_BRANCH="$DRONE_BRANCH"
     - sed -i '$ichown -R conda:conda "$FEEDSTOCK_ROOT"' /opt/docker/bin/entrypoint
+    - env
     - /opt/docker/bin/entrypoint $FEEDSTOCK_ROOT/.scripts/build_steps.sh
     - echo "Done building"
 
