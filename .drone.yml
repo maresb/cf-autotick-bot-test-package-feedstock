@@ -18,14 +18,13 @@ steps:
     FEEDSTOCK_TOKEN:
       from_secret: FEEDSTOCK_TOKEN
     STAGING_BINSTAR_TOKEN:
-      from secret: STAGING_BINSTAR_TOKEN
+      from_secret: STAGING_BINSTAR_TOKEN
   commands:
     - export FEEDSTOCK_ROOT="$DRONE_WORKSPACE"
     - export RECIPE_ROOT="$FEEDSTOCK_ROOT/recipe"
     - export CI=drone
     - export GIT_BRANCH="$DRONE_BRANCH"
     - sed -i '$ichown -R conda:conda "$FEEDSTOCK_ROOT"' /opt/docker/bin/entrypoint
-    - env
     - /opt/docker/bin/entrypoint $FEEDSTOCK_ROOT/.scripts/build_steps.sh
     - echo "Done building"
 
@@ -49,7 +48,7 @@ steps:
     FEEDSTOCK_TOKEN:
       from_secret: FEEDSTOCK_TOKEN
     STAGING_BINSTAR_TOKEN:
-      from secret: STAGING_BINSTAR_TOKEN
+      from_secret: STAGING_BINSTAR_TOKEN
   commands:
     - export FEEDSTOCK_ROOT="$DRONE_WORKSPACE"
     - export RECIPE_ROOT="$FEEDSTOCK_ROOT/recipe"
@@ -79,7 +78,7 @@ steps:
     FEEDSTOCK_TOKEN:
       from_secret: FEEDSTOCK_TOKEN
     STAGING_BINSTAR_TOKEN:
-      from secret: STAGING_BINSTAR_TOKEN
+      from_secret: STAGING_BINSTAR_TOKEN
   commands:
     - export FEEDSTOCK_ROOT="$DRONE_WORKSPACE"
     - export RECIPE_ROOT="$FEEDSTOCK_ROOT/recipe"
@@ -109,7 +108,7 @@ steps:
     FEEDSTOCK_TOKEN:
       from_secret: FEEDSTOCK_TOKEN
     STAGING_BINSTAR_TOKEN:
-      from secret: STAGING_BINSTAR_TOKEN
+      from_secret: STAGING_BINSTAR_TOKEN
   commands:
     - export FEEDSTOCK_ROOT="$DRONE_WORKSPACE"
     - export RECIPE_ROOT="$FEEDSTOCK_ROOT/recipe"
