@@ -22,12 +22,10 @@ fi
 source ${HOME}/miniforge3/etc/profile.d/conda.sh
 conda activate base
 
-echo -e "\n\nInstalling conda-forge-ci-setup=2 and conda-build."
-conda install -n base --quiet --yes conda-forge-ci-setup=2 conda-build pip
+echo -e "\n\nInstalling conda-forge-ci-setup=3 and conda-build."
+conda install -n base --quiet --yes conda-forge-ci-setup=3 conda-build pip
 
 
-conda uninstall --quiet --yes --force conda-forge-ci-setup
-pip install --no-deps recipe/.
 
 echo -e "\n\nSetting up the condarc and mangling the compiler."
 setup_conda_rc ./ ./recipe ./.ci_support/${CONFIG}.yaml
@@ -38,8 +36,8 @@ echo -e "\n\nMangling homebrew in the CI to avoid conflicts."
 /usr/bin/sudo -k
 
 echo -e "\n\nRunning the build setup script."
-# Overriding global run_conda_forge_build_setup_osx with local copy.
-source recipe/run_conda_forge_build_setup_osx
+source run_conda_forge_build_setup
+
 
 if [[ ${CI} == "travis" ]]; then
   echo -en 'travis_fold:end:configure_conda\\r'
