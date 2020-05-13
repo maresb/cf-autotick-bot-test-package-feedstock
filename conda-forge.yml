@@ -5,4 +5,4 @@ provider:
   linux_ppc64le: default
 bot:
   automerge: true
-conda_forge_output_validation: false
+conda_forge_output_validation: true
