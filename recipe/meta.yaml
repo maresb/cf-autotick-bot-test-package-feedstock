@@ -11,6 +11,7 @@ source:
 
 build:
   number: 171
+  skip: true  # [not linux64]
 
 requirements:
   host:
@@ -33,3 +34,5 @@ about:
 extra:
   recipe-maintainers:
     - conda-forge-daemon
+    - conda-forge/bot
+    - beckermr
