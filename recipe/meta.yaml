@@ -10,14 +10,15 @@ source:
   sha256: 60d295f02adf578b16cbd2b7198fce6e4f44bb05b2d0a1eaa68318b0639f18d2
 
 build:
-  number: 0
+  number: 1
+  noarch: python
 
 requirements:
   host:
-    - python
+    - python >=3.6
     - pip
   run:
-    - python
+    - python >=3.6
 
 test:
   commands:
