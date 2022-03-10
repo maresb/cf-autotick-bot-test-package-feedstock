@@ -11,14 +11,14 @@ source:
 
 build:
   number: 0
-  noarch: python
+  skip: True  # [win]
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
   run:
-    - python >=3.6
+    - python
 
 test:
   commands:
