@@ -20,6 +20,13 @@ Current build status
         <img alt="Linux" src="https://img.shields.io/circleci/project/github/conda-forge/cf-autotick-bot-test-package-feedstock/main.svg?label=Linux">
       </a>
     </td>
+  </tr><tr>
+    <td>Travis</td>
+    <td>
+      <a href="https://travis-ci.com/conda-forge/cf-autotick-bot-test-package-feedstock">
+        <img alt="macOS" src="https://img.shields.io/travis/com/conda-forge/cf-autotick-bot-test-package-feedstock/main.svg?label=macOS">
+      </a>
+    </td>
   </tr>
     
   <tr>
@@ -38,6 +45,13 @@ Current build status
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8857&branchName=main">
                   <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/cf-autotick-bot-test-package-feedstock?branchName=main&jobName=linux&configuration=linux_64_python3.9.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>linux_ppc64le_python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=8857&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/cf-autotick-bot-test-package-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -150,8 +164,4 @@ Feedstock Maintainers
 =====================
 
 * [@conda-forge-daemon](https://github.com/conda-forge-daemon/)
-
-
-
-<!-- dummy commit to enable rerendering -->
 
