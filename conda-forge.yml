@@ -5,6 +5,7 @@ github:
   branch_name: main
   tooling_branch_name: main
 provider:
-  linux: circle
-  osx: azure
-  win: azure
+  linux_ppc64le: travis
+  linux_64: circle
+  osx_64: azure
+  win_64: azure
