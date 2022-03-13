@@ -158,4 +158,3 @@ Feedstock Maintainers
 
 * [@conda-forge-daemon](https://github.com/conda-forge-daemon/)
 
-
